@@ -1,0 +1,84 @@
+
+/* classes */
+.feature {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1px;
+      stroke-linejoin: round;
+}
+.mesh {
+    fill: none;
+      stroke: lightgrey;
+      stroke-width: 2px;
+      stroke-linejoin: round;
+}
+h1 {
+    font-family: sans-serif;
+}
+
+
+.title-header{
+    /* Stony Brook Red */
+    /* https://www.stonybrook.edu/sbu-brand/design-visual-identity/colors.php */
+    background-color: #990000;
+}
+
+/* https://www.w3schools.com/howto/howto_css_dividers.asp */
+/* Rounded border */
+hr.rounded {
+    border-top: 8px solid #bbb;
+    border-radius: 5px;
+  }
+
+  text {
+    font-size: smaller;
+    text-shadow: 1px 0 1px rgb(196, 196, 196), 0 1px 1px rgb(196, 196, 196), -1px 0 1px rgb(196, 196, 196), 0 -1px 1px rgb(196, 196, 196);
+}
+
+.pcp-axis-labels{
+    text-anchor: middle;
+    fill: rgb(27, 27, 27);
+}
+
+
+.pcp-axis{
+    stroke-width: 0.1%;
+    cursor: move;
+}
+
+.variables-mds-scatter-point{
+    stroke-width: 0%;
+    cursor: pointer;
+}
+
+/* .barChart .bar {
+    fill: steelblue;
+  }
+  .barChart .x.axis path {
+    display: none;
+  } */
+.bar:hover {
+    fill:black;
+}
+/* .mySlices:hover{
+    fill:black;
+} */
+
+.x.axis path {
+    display: none;
+}
+
+#Departure_Delay-plot-container .x.axis text {
+    text-anchor: end;
+}
+
+#Departure_Delay-plot-container svg {
+    overflow: visible;
+}
+
+.brush .extent {
+        stroke: #f09f8c;
+        fill-opacity: .125;
+        shape-rendering: crispEdges;
+   }
+

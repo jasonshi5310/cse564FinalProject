@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- https://www.w3schools.com/css/css_rwd_viewport.asp -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minqi Shi CSE 564 Final Project Team 9 📊</title>
+    <link href="{{url_for('static', filename='css/indexStyle.css')}}" rel="stylesheet">
+    <!-- https://www.bootstrapcdn.com/ -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src=
+                "https://d3js.org/d3-geo-projection.v2.min.js">
+      </script>
+</head>
+
+<body>
+    <header class="title-header bg-gradient navbar-light">
+        <div class="container title text-center" style="display: block;">
+           <span class="fw-bold fs-1 text-white">Visualize the Punctuality of Flights in the U.S. Affected by Weather</span>
+        </div>
+    </header>
+    <br>
+    <br>
+
+    <div id="loading-page" class="container" style="text-align:center" >
+        <h2>Loading From Server... Please Wait...</h2>
+        <hr class="rounded">
+    </div>
+    
+    <div class="container" id="main-container" hidden>
+        <div class="center"> <span class="center" id="carriers"></span></div>
+        <div class="row center">
+            <div id="geo-plot-div" class="col" >
+                <h2 style="text-align: center;"> Geo Plot</h2>
+                <div id="geo-plot-container">
+                    <!-- geo plot here -->
+                </div>
+            </div>
+            <!-- <div id="variables-mds-plot-div" class="col" >
+                <h2 style="text-align: center;"> <span style="color:#990000;">Variables</span> MDS Plot</h2>
+                <div id="variables-mds-plot-container">
+                    
+                </div>
+            </div> -->
+              <!-- Carrier Bar plot here -->
+            <!-- <div id="carrier-bar-plot-div" class="col" >
+                <h2 style="text-align: center;"> Carrier Bar Plot</h2>
+                <div id="carrier-bar-plot-container">
+                  
+                </div>
+            </div> -->
+            <div id="carrier-pie-plot-div" class="col" >
+                <h2 style="text-align: center;"> Carrier Pie Plot</h2>
+                <div id="carrier-pie-plot-container">
+                  
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            
+            <div id="pcp-div" class="col">
+                <h2 style="text-align: center;">Parallel Coordinates Plot (PCP) </h2>
+                <div id="pcp-plot-container">
+                   
+                </div>
+            </div>
+        </div> -->
+        <br>
+        <hr class="rounded">
+    </div>
+    <div class="container" id="lines-container" hidden>
+
+        <div class="row center">
+            <!-- 'Origin_Airport', 'Flight_Season', 'Flight_Month',
+        // 'Flight_Week', -->
+            <!-- <div id="Origin_Airport-div" class="col">
+                <h5 style="text-align: center;">Brushing Bar </h5>
+                <div id="Origin_Airport-plot-container">
+                   
+                </div>
+            </div> -->
+
+            <!-- <div id="Flight_Season-div" class="col">
+                <h5 style="text-align: center;">Flight_Season </h5>
+                <div id="Flight_Season-plot-container">
+                   
+                </div>
+            </div> -->
+
+            <div id="Flight_Month-div" class="col">
+                <h5 style="text-align: center;">Flight Month</h5>
+                <div id="Flight_Month-plot-container">
+                   
+                </div>
+            </div>
+
+            <!-- <div id="Flight_Week-div" class="col">
+                <h5 style="text-align: center;">Flight_Week </h5>
+                <div id="Flight_Week-plot-container">
+                   
+                </div>
+            </div> -->
+
+            <div id="Flight_Day" class="col">
+                <h5 style="text-align: center;">Flight Day </h5>
+                <div id="Flight_Day-plot-container">
+                   
+                </div>
+            </div>
+
+            <!-- 'Scheduled_Departure_Time',
+             'Departure_Delay', 'Dep_Temp_3',
+            // 'Dep_Pressure_3', 'Dep_Humidity_3', 'Dep_Wind_Speed_3',
+            // 'Dep_Wind_Deg_3', 'Dep_Clouds_3', 'Dep_Rain_3', 'Lat_N',
+            // 'Lng_W', 'GMT' -->
+            <div id="Scheduled_Departure_Time" class="col">
+                <h5 style="text-align: center;">Scheduled Departure Time </h5>
+                <div id="Scheduled_Departure_Time-plot-container">
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row center">
+            <div id="Dep_Wind_Speed_3" class="col">
+                <h5 style="text-align: center;">Wind Speed </h5>
+                <div id="Dep_Wind_Speed_3-plot-container">
+                   
+                </div>
+            </div>
+            <div id="Dep_Temp_3" class="col">
+                <h5 style="text-align: center;">Temperature (C) </h5>
+                <div id="Dep_Temp_3-plot-container">
+                   
+                </div>
+            </div>
+            <!-- <div id="Dep_Pressure_3" class="col">
+                <h5 style="text-align: center;">Dep_Pressure_3 </h5>
+                <div id="Dep_Pressure_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <!-- <div id="Dep_Wind_Speed_3" class="col">
+                <h5 style="text-align: center;">Dep_Wind_Speed_3 </h5>
+                <div id="Dep_Wind_Speed_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <div id="Dep_Clouds_3" class="col">
+                <h5 style="text-align: center;">Clouds</h5>
+                <div id="Dep_Clouds_3-plot-container">
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="row center">
+            <div id="Departure_Delay" class="col">
+                <h5 style="text-align: center;">Departure Delay (min) </h5>
+                <div id="Departure_Delay-plot-container">
+                   
+                </div>
+            </div>
+            <!-- 'Dep_Humidity_3', 'Dep_Wind_Speed_3',
+            // 'Dep_Wind_Deg_3', 'Dep_Clouds_3', 'Dep_Rain_3', 'Lat_N',
+            // 'Lng_W', 'GMT' -->
+            <!-- <div id="Dep_Humidity_3" class="col">
+                <h5 style="text-align: center;">Dep_Humidity_3 </h5>
+                <div id="Dep_Humidity_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <!-- <div id="Dep_Wind_Speed_3" class="col">
+                <h5 style="text-align: center;">Dep_Wind_Speed_3 </h5>
+                <div id="Dep_Wind_Speed_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <!-- <div id="Dep_Wind_Deg_3" class="col">
+                <h5 style="text-align: center;">Dep_Wind_Deg_3 </h5>
+                <div id="Dep_Wind_Deg_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <!-- <div id="Dep_Clouds_3" class="col">
+                <h5 style="text-align: center;">Dep_Clouds_3 </h5>
+                <div id="Dep_Clouds_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <!-- <div id="Dep_Dep_Rain_3" class="col">
+                <h5 style="text-align: center;">Dep_Rain_3 </h5>
+                <div id="Dep_Rain_3-plot-container">
+                   
+                </div>
+            </div> -->
+            <div id="Lat_N" class="col">
+                <h5 style="text-align: center;">East Latitude </h5>
+                <div id="Lat_N-plot-container">
+                   
+                </div>
+            </div>
+            <div id="Lng_W" class="col">
+                <h5 style="text-align: center;">West Longitude </h5>
+                <div id="Lng_W-plot-container">
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+        
+    <!-- Crossfilter CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+
+    <!-- axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- barChart.js -->
+    <script src="{{url_for('static', filename='/js/barChart.js')}}"></script>
+
+    <!-- Plot.js -->
+    <script src="{{url_for('static', filename='/js/plot.js')}}"></script>
+</body>
+
+</html>
