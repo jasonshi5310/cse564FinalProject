@@ -154,7 +154,7 @@ function setup(){
         let temp_c = cluster_IDs[i]
         d3.select("#carriers")
         .append("text")
-        .text(airlines_fullname[temp_c] +"("+ airlines[temp_c] +")"+ ": "+ temp_c +"("+clusterColor[temp_c]+");     ")
+        .text(airlines_fullname[temp_c] +"("+ airlines[temp_c] +")"+ ": "+clusterColor[temp_c]+";     ")
         .style("color", clusterColor[temp_c])
         ;
     }
@@ -1111,7 +1111,7 @@ function createPieChart(pie_data)
         .attr('x', legendRectSize + legendSpacing + 5)
         .attr('y', legendRectSize - legendSpacing)
         .text(function (d) {
-             return airlines[d.key]+ ": "+d.key;
+             return airlines[d.key]+ ": "+d.value;
         });
 
 }
