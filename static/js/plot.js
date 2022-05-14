@@ -126,8 +126,12 @@ var Departure_DelaybarCharts = barChart()
 
 let data = null;
 // https://www.w3.org/wiki/CSS/Properties/color/keywords
-let clusterColor = ['lime','green','olive','purple','navy','fuchsia',
-                    'red', 'yellowgreen','teal', 'maroon', 'blue', 'aqua'];
+// 3 6 8 9 10
+// let clusterColor = ['lime','green','olive','purple','navy','fuchsia',
+//                     'red', 'yellowgreen','teal', 'maroon', 'blue', 'aqua'];
+let clusterColor = ['lime','green','olive','#1b9e77','navy','fuchsia',
+                    '#d95f02', 'yellowgreen','#7570b3', '#e7298a', '#e6ab02', 'aqua'];
+
 var csFilterData = [];
 function send_request(){
     // Use axios to parse
@@ -1178,7 +1182,7 @@ function createGeoPlot(geoData){
             });
 
             clusters.push(geo_svg
-                .selectAll(GEO_CLUSTER + clusterColor[cluster_i])
+                .selectAll(GEO_CLUSTER + clusterColor[cluster_i].substring(1))
                 .data(cluster_data)
                 .enter()
                 .append("circle")

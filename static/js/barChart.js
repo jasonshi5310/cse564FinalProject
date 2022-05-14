@@ -8,7 +8,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         280 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -18,7 +18,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -27,7 +27,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -36,7 +36,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -45,7 +45,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -54,7 +54,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -63,7 +63,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -72,7 +72,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -81,7 +81,7 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),
@@ -90,14 +90,14 @@ var brushes = {
                     .extent([
                     [0, 0],
                     [
-                        380, //width - margin.right - margin.left,
+                        370, //width - margin.right - margin.left,
                         80 //height - margin.bottom - margin.top
                     ]
                     ]),    
 };
 function barChart() {
 
-    let margin = {top: 0, right: 0, bottom: 20, left: 20},
+    let margin = {top: 10, right: 20, bottom: 20, left: 30},
       width = 400,
       height = 400,
       isColored = false,
@@ -232,7 +232,7 @@ function barChart() {
                 //console.log(d.key);
                 if (isColored)
                     return barColor[Number(d.key)]
-                else return "green";
+                else return "#66a61e";
             })
             .on("mouseover", onMouseOver)
             .on("mouseout", onMouseOut);
